@@ -15,16 +15,16 @@ pg-arq-capas/
 ├── negocio/Ticket.php            → Capa de NEGOCIO
 ├── datos/
 │   ├── Conexion.php              → Capa de PERSISTENCIA (conexión PDO)
-│   └── TicketRepository.php      → Capa de PERSISTENCIA (INSERT)
+│   ├── TicketRepository.php      → Capa de PERSISTENCIA (INSERT)
+│   └── schema.sql                → Tabla ticket + datos de prueba
 ├── config/
 │   ├── config.php                → Configuración (lee credenciales fuera del repo)
 │   └── config.local.example.php  → Plantilla de credenciales
-└── database/schema.sql           → Tabla ticket + datos de prueba
 ```
 
 ## Cómo ejecutarlo
 
-1. Crear la base y la tabla: `mysql -u root -p < database/schema.sql`
+1. Crear la base y la tabla: `mysql -u root -p < datos/schema.sql`
 2. Copiar `config/config.local.example.php` como `config/config.local.php` y completar usuario y clave
    (también se pueden usar las variables de entorno `DB_DSN`, `DB_USUARIO`, `DB_CLAVE`).
 3. Levantar el servidor: `php -S localhost:8000 -t public`
