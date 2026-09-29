@@ -7,6 +7,7 @@ Todo Ticket nuevo comienza automáticamente en estado **pendiente**.
 
 ```
 pg-arq-capas/
+├── index.php                     → Redirige a public/ (para entrar con localhost/pg-arq-capas/)
 ├── public/                       → Capa de PRESENTACIÓN
 │   ├── index.html                → Página de inicio (HTML)
 │   ├── css/estilos.css           → Estilos compartidos (CSS)
@@ -22,15 +23,23 @@ pg-arq-capas/
 │   └── config.local.example.php  → Plantilla de credenciales
 ```
 
-## Cómo ejecutarlo
+## Cómo ejecutarlo con XAMPP
 
-1. Crear la base y la tabla: `mysql -u root -p < datos/schema.sql`
-2. Copiar `config/config.local.example.php` como `config/config.local.php` y completar usuario y clave
-   (también se pueden usar las variables de entorno `DB_DSN`, `DB_USUARIO`, `DB_CLAVE`).
-3. Levantar el servidor: `php -S localhost:8000 -t public`
-4. Abrir <http://localhost:8000/>
+1. Copiar la carpeta del proyecto en `C:\xampp\htdocs\pg-arq-capas`
+   (o clonarla ahí: `git clone https://github.com/ItsAgusMC/pg-arq-capas.git`).
+2. Abrir el **XAMPP Control Panel** e iniciar **Apache** y **MySQL**.
+3. Entrar en <http://localhost/phpmyadmin>, pestaña **Importar**, elegir `datos/schema.sql` y hacer clic en **Importar**
+   (crea la base `tickets_db`, la tabla `ticket` y 3 tickets de prueba).
+4. Abrir <http://localhost/pg-arq-capas/>
 
-> `config/config.local.php` está en `.gitignore`: las credenciales nunca se suben al repositorio.
+Con la instalación estándar de XAMPP (usuario `root` sin contraseña) no hace falta configurar nada.
+Si tu MySQL tiene otro usuario o contraseña, copiá `config/config.local.example.php` como
+`config/config.local.php` y completalo. Ese archivo está en `.gitignore`: las credenciales nunca se suben al repositorio.
+
+Las carpetas `config/`, `datos/` y `negocio/` tienen un `.htaccess` que impide abrirlas desde el navegador:
+sólo se accede a `public/`.
+
+> Sin XAMPP también funciona con el servidor de PHP: `php -S localhost:8000 -t public`.
 
 ## Comentario: ¿qué hace cada capa?
 

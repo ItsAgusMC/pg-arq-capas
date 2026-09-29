@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Alta de Ticket</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="../css/estilos.css">
     <script src="../js/crear.js" defer></script>
 </head>
