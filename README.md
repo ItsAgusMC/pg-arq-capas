@@ -39,6 +39,14 @@ Si tu MySQL tiene otro usuario o contraseña, copiá `config/config.local.exampl
 Las carpetas `config/`, `datos/` y `negocio/` tienen un `.htaccess` que impide abrirlas desde el navegador:
 sólo se accede a `public/`.
 
+### Si aparece un mensaje de error al guardar
+
+| Mensaje | Solución |
+|---|---|
+| No se pudo conectar con MySQL | Iniciar **MySQL** en el XAMPP Control Panel. |
+| La base de datos / la tabla ticket no existe | Importar `datos/schema.sql` en phpMyAdmin. |
+| MySQL rechazó el usuario o la contraseña | Crear `config/config.local.php` con el usuario y la contraseña correctos. |
+
 > Sin XAMPP también funciona con el servidor de PHP: `php -S localhost:8000 -t public`.
 
 ## Comentario: ¿qué hace cada capa?

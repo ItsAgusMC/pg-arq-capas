@@ -27,4 +27,21 @@ class Conexion
 
         return self::$pdo;
     }
+
+    /**
+     * Traduce los errores más comunes de MySQL a un mensaje que indique cómo resolverlo.
+     * Vive aquí porque sólo la capa de persistencia conoce los códigos de la base de datos.
+     */
+    public static function describirError(PDOException $ex): string
+    {
+        $codigo = (int) ($ex->errorInfo[1] ?? $ex->getCode());
+
+        return match ($codigo) {
+            2002 => 'No se pudo conectar con MySQL. Verifique que esté iniciado (XAMPP Control Panel → MySQL → Start).',
+            1045 => 'MySQL rechazó el usuario o la contraseña. Revise config/config.local.php.',
+            1049 => 'La base de datos no existe. Importe datos/schema.sql desde phpMyAdmin.',
+            1146 => 'La tabla ticket no existe. Importe datos/schema.sql desde phpMyAdmin.',
+            default => 'No se pudo guardar el Ticket. Intente nuevamente más tarde.',
+        };
+    }
 }

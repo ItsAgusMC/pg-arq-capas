@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mensaje = $ex->getMessage();
     } catch (PDOException $ex) {
         error_log($ex->getMessage());
-        $mensaje = 'No se pudo guardar el Ticket. Intente nuevamente más tarde.';
+        $mensaje = Conexion::describirError($ex);
     }
 }
 ?>
