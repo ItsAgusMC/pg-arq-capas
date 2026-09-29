@@ -32,7 +32,7 @@ pg-arq-capas/
    (crea la base `tickets_db`, la tabla `ticket` y 3 tickets de prueba).
 4. Abrir <http://localhost/pg-arq-capas/>
 
-Con la instalación estándar de XAMPP (usuario `root` sin contraseña) no hace falta configurar nada.
+Con la instalación estándar de XAMPP (MySQL en `127.0.0.1`, puerto `3306`, usuario `root` sin contraseña) no hace falta configurar nada.
 Si tu MySQL tiene otro usuario o contraseña, copiá `config/config.local.example.php` como
 `config/config.local.php` y completalo. Ese archivo está en `.gitignore`: las credenciales nunca se suben al repositorio.
 
