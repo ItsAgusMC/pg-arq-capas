@@ -2,12 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * CAPA DE PERSISTENCIA
- *
- * Único lugar donde se crea la conexión a la base de datos (DRY / SSOT).
- * Los datos de conexión se leen de config/config.php.
- */
 class Conexion
 {
     private static ?PDO $pdo = null;
@@ -28,10 +22,6 @@ class Conexion
         return self::$pdo;
     }
 
-    /**
-     * Traduce los errores más comunes de MySQL a un mensaje que indique cómo resolverlo.
-     * Vive aquí porque sólo la capa de persistencia conoce los códigos de la base de datos.
-     */
     public static function describirError(PDOException $ex): string
     {
         $codigo = (int) ($ex->errorInfo[1] ?? $ex->getCode());

@@ -2,18 +2,8 @@
 
 declare(strict_types=1);
 
-/**
- * CAPA DE NEGOCIO
- *
- * Representa un Ticket y concentra sus reglas (principio Experto):
- * el Ticket es quien tiene la información necesaria para saber
- * cómo nace, qué datos son válidos y en qué estado comienza.
- *
- * No conoce la base de datos ni el formulario (bajo acoplamiento).
- */
 class Ticket
 {
-    // SSOT: los estados posibles se definen en un único lugar.
     public const ESTADO_PENDIENTE = 'pendiente';
 
     public const TITULO_MAX = 150;
@@ -30,12 +20,6 @@ class Ticket
         $this->estado = $estado;
     }
 
-    /**
-     * Crea un Ticket nuevo aplicando las reglas de negocio.
-     * El estado inicial NO lo decide quien llama: siempre es "pendiente".
-     *
-     * @throws InvalidArgumentException si los datos no son válidos.
-     */
     public static function nuevo(string $titulo, string $descripcion): self
     {
         $titulo = trim($titulo);

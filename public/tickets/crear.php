@@ -2,13 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * CAPA DE PRESENTACIÓN
- *
- * Muestra el formulario, recibe los datos, inicia la creación del Ticket
- * y muestra el resultado. No contiene SQL ni decide el estado del Ticket.
- */
-
 require_once __DIR__ . '/../../negocio/Ticket.php';
 require_once __DIR__ . '/../../datos/Conexion.php';
 require_once __DIR__ . '/../../datos/TicketRepository.php';
@@ -28,9 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descripcion = (string) ($_POST['descripcion'] ?? '');
 
     try {
-        $ticket = Ticket::nuevo($titulo, $descripcion);          // negocio
+        $ticket = Ticket::nuevo($titulo, $descripcion);
         $repositorio = new TicketRepository(Conexion::obtener());
-        $repositorio->guardar($ticket);                          // persistencia
+        $repositorio->guardar($ticket);
 
         $exito = true;
         $mensaje = sprintf(
