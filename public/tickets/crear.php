@@ -53,33 +53,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Alta de Ticket</title>
-    <style>
-        body { font-family: system-ui, sans-serif; max-width: 560px; margin: 2rem auto; padding: 0 1rem; }
-        label { display: block; margin-top: 1rem; font-weight: 600; }
-        input, textarea { width: 100%; padding: .5rem; box-sizing: border-box; font: inherit; }
-        textarea { min-height: 120px; }
-        button { margin-top: 1rem; padding: .6rem 1.2rem; font: inherit; cursor: pointer; }
-        .mensaje { padding: .75rem 1rem; border-radius: 6px; }
-        .ok { background: #e6f4ea; color: #1e5631; }
-        .error { background: #fdecea; color: #8a1c1c; }
-    </style>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <script src="../js/crear.js" defer></script>
 </head>
 <body>
-    <h1>Alta de Ticket</h1>
+    <main class="tarjeta">
+        <h1>Alta de Ticket</h1>
 
-    <?php if ($mensaje !== null): ?>
-        <p class="mensaje <?= $exito ? 'ok' : 'error' ?>"><?= e($mensaje) ?></p>
-    <?php endif; ?>
+        <?php if ($mensaje !== null): ?>
+            <p class="mensaje <?= $exito ? 'ok' : 'error' ?>"><?= e($mensaje) ?></p>
+        <?php endif; ?>
+        <p id="error-cliente" class="mensaje error oculto"></p>
 
-    <form method="post" action="">
-        <label for="titulo">Título</label>
-        <input type="text" id="titulo" name="titulo" required
-               maxlength="<?= Ticket::TITULO_MAX ?>" value="<?= e($titulo) ?>">
+        <form id="form-ticket" method="post" action="">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo" required
+                   maxlength="<?= Ticket::TITULO_MAX ?>" value="<?= e($titulo) ?>">
+            <div id="contador-titulo" class="contador"></div>
 
-        <label for="descripcion">Descripción</label>
-        <textarea id="descripcion" name="descripcion" required><?= e($descripcion) ?></textarea>
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" required><?= e($descripcion) ?></textarea>
 
-        <button type="submit">Crear Ticket</button>
-    </form>
+            <button type="submit">Crear Ticket</button>
+        </form>
+
+        <p><a href="../index.html">Volver al inicio</a></p>
+    </main>
 </body>
 </html>
