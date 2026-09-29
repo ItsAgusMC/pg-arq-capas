@@ -45,7 +45,7 @@ sólo se accede a `public/`.
 |---|---|
 | No se pudo conectar con MySQL | Iniciar **MySQL** en el XAMPP Control Panel. |
 | La base de datos / la tabla ticket no existe | Importar `datos/schema.sql` en phpMyAdmin. |
-| MySQL rechazó el usuario o la contraseña | Crear `config/config.local.php` con el usuario y la contraseña correctos. |
+| MySQL rechazó al usuario "…" | Tu MySQL no usa los valores de fábrica. Abrir `C:\xampp\phpMyAdmin\config.inc.php`, ver `user` y `password`, copiar `config/config.local.example.php` como `config/config.local.php` y poner esos mismos datos. |
 
 > Sin XAMPP también funciona con el servidor de PHP: `php -S localhost:8000 -t public`.
 
